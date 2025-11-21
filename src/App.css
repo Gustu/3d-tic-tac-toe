@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@500;700&display=swap');
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #0f0f13;
+  color: white;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Screens Overlay */
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 20, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+/* Neon Box Container */
+.neon-box {
+  background: rgba(20, 20, 40, 0.9);
+  padding: 2rem;
+  border: 4px solid #4ecdc4;
+  box-shadow: 
+    0 0 10px #4ecdc4,
+    0 0 20px #4ecdc4,
+    inset 0 0 20px rgba(78, 205, 196, 0.2);
+  text-align: center;
+  min-width: 450px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Corner decorations */
+.neon-box::before, .neon-box::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  box-shadow: 0 0 10px white;
+}
+.neon-box::before { top: -12px; left: -12px; }
+.neon-box::after { bottom: -12px; right: -12px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.game-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 
+    4px 4px 0px #4ecdc4,
+    8px 8px 0px #ff6b6b;
+  line-height: 1.4;
+}
+
+/* Winner Screen specific */
+.winner-screen {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
+  pointer-events: none;
+  align-items: flex-end;
+  padding-bottom: 4rem;
+}
+
+.winner-screen .neon-box {
+  border-color: #ff6b6b;
+  box-shadow: 
+    0 0 10px #ff6b6b,
+    0 0 20px #ff6b6b;
+  pointer-events: auto;
+  background: rgba(20, 20, 40, 0.9);
+}
+
+.winner-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Menu Options */
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.option-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.option-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #4ecdc4;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+}
+
+.toggle-group {
+  display: flex;
+  background: #111;
+  padding: 4px;
+  border: 2px solid #333;
+}
+
+.toggle-group button {
+  flex: 1;
+  background: transparent;
+  padding: 0.8rem 1.5rem;
+  color: #666;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.toggle-group button.active {
+  background: #4ecdc4;
+  color: #000;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+/* Rules Box */
+.rules-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #333;
+  padding: 1rem;
+  text-align: left;
+  margin: 0.5rem 0;
+}
+
+.rules-box h3 {
+  color: #ff6b6b;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  margin: 0 0 0.8rem 0;
+}
+
+.rules-box p {
+  white-space: pre-line;
+  line-height: 1.5;
+  color: #ccc;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.rules-box .controls-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 0.5rem;
+}
+
+/* Buttons */
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #ff6b6b;
+  color: white;
+  padding: 1rem 2rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 4px solid #c92a2a;
+  box-shadow: 0 6px 0 #c92a2a;
+  transition: all 0.1s;
+  width: 100%;
+  margin-top: 0.5rem;
+  position: relative;
+  top: 0;
+}
+
+.primary-btn:hover {
+  background: #ff8787;
+  top: -2px;
+  box-shadow: 0 8px 0 #c92a2a;
+}
+
+.primary-btn:active {
+  top: 6px;
+  box-shadow: 0 0 0 #c92a2a;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid #666;
+  color: #888;
+  padding: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.secondary-btn:hover {
+  border-color: white;
+  color: white;
+}
+
+/* HUD */
+.game-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hud-top {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+  pointer-events: auto;
+}
+
+.player-turn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.player-turn span {
+  font-size: 1.5rem;
+}
+
+.thinking-indicator {
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.game-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.menu-btn {
+  background: #333;
+  padding: 0.8rem;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  border: 2px solid #555;
+}
+
+.menu-btn:hover {
+  background: #444;
+  border-color: #777;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.github-link {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.github-link-text {
+  color: #4ecdc4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.github-link-text:hover {
+  color: #6ee5dc;
+  text-decoration: underline;
+}
+
+.github-link-hud {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.github-link-hud .github-link-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.github-link-hud .github-link-text:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
