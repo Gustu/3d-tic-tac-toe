@@ -1,8 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createEmptyBoard, checkExplosion } from '../gameLogic';
-import { BoardState, Player } from '../../types';
-
-const BOARD_SIZE = 4;
+import { Player } from '../../types';
 
 describe('Explosion Logic', () => {
   const setupBoard = (coords: {x: number, y: number, z: number, p: Player}[]) => {
