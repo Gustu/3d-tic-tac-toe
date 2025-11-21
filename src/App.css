@@ -290,6 +290,7 @@ button {
 .canvas-container {
   width: 100%;
   height: 100%;
+  touch-action: none; /* Prevent default touch behaviors on canvas */
 }
 
 .instructions {
@@ -338,4 +339,253 @@ button {
 
 .github-link-hud .github-link-text:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Layer Selector */
+.layer-selector-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: auto;
+  display: none; /* Hidden on desktop */
+  width: 100%;
+  padding: 0.5rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.layer-buttons {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid #4ecdc4;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.layer-btn {
+  background: rgba(78, 205, 196, 0.2);
+  color: #4ecdc4;
+  border: 2px solid #4ecdc4;
+  padding: 0.6rem 1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  cursor: pointer;
+  border-radius: 4px;
+  min-width: 44px; /* Touch target size */
+  min-height: 44px;
+  transition: all 0.2s;
+}
+
+.layer-btn.active {
+  background: #4ecdc4;
+  color: #000;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.8);
+}
+
+.layer-btn:hover {
+  background: rgba(78, 205, 196, 0.4);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .desktop-instructions {
+    display: none;
+  }
+  
+  .mobile-instructions {
+    display: block;
+  }
+  
+  .layer-selector-mobile {
+    display: block;
+  }
+  
+  .layer-buttons {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  
+  .game-hud {
+    font-size: 0.9rem;
+  }
+  
+  .hud-top {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .player-turn {
+    font-size: 0.9rem;
+  }
+  
+  .player-turn span {
+    font-size: 1.2rem;
+  }
+  
+  .game-status {
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .game-status span {
+    font-size: 0.8rem;
+  }
+  
+  .menu-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.6rem;
+    min-width: 60px;
+    min-height: 44px;
+  }
+  
+  .instructions {
+    bottom: 5rem; /* Make room for layer selector */
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+  
+  .instructions p {
+    margin: 0.3rem 0;
+  }
+  
+  .github-link-hud {
+    bottom: 4rem; /* Above layer selector */
+    right: 1rem;
+  }
+  
+  .github-link-hud .github-link-text {
+    font-size: 0.7rem;
+  }
+  
+  .neon-box {
+    min-width: auto;
+    width: 90vw;
+    max-width: 90vw;
+    padding: 1.5rem;
+  }
+  
+  .game-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .winner-title {
+    font-size: 1.2rem;
+  }
+  
+  .option-group label {
+    font-size: 0.6rem;
+  }
+  
+  .toggle-group button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.6rem;
+    min-height: 44px;
+  }
+  
+  .primary-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+  }
+  
+  .secondary-btn {
+    padding: 0.8rem;
+    font-size: 0.7rem;
+    min-height: 44px;
+  }
+  
+  .rules-box {
+    padding: 0.8rem;
+  }
+  
+  .rules-box h3 {
+    font-size: 0.7rem;
+  }
+  
+  .rules-box p {
+    font-size: 0.85rem;
+  }
+  
+  .rules-box .controls-hint {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hud-top {
+    padding: 0.8rem;
+  }
+  
+  .player-turn {
+    font-size: 0.8rem;
+  }
+  
+  .player-turn span {
+    font-size: 1rem;
+  }
+  
+  .game-title {
+    font-size: 1rem;
+  }
+  
+  .winner-title {
+    font-size: 1rem;
+  }
+  
+  .layer-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.6rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .instructions {
+    font-size: 0.75rem;
+  }
+}
+
+/* Prevent text selection on mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  button, a {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Hide mobile instructions on desktop */
+.mobile-instructions {
+  display: none;
+}
+
+.mobile-controls-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-controls-hint {
+    display: none;
+  }
+  
+  .mobile-controls-hint {
+    display: block;
+  }
 }

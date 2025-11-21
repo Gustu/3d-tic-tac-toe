@@ -31,3 +31,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: none;
+}

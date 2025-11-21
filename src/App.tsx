@@ -196,10 +196,33 @@ function App() {
           </div>
           
           <div className="instructions">
-            <p>Rotate: Left Click + Drag | Zoom: Scroll</p>
-            <p>Layers: 1-{boardSize} | Grid: G | Reset: Esc</p>
+            <p className="desktop-instructions">Rotate: Left Click + Drag | Zoom: Scroll</p>
+            <p className="desktop-instructions">Layers: 1-{boardSize} | Grid: G | Reset: Esc</p>
+            <p className="mobile-instructions">Rotate: Drag | Zoom: Pinch</p>
             {gameMode === 'Gravity' && <p style={{color: '#ffd700'}}>Gravity Mode: Build from bottom up!</p>}
           </div>
+
+          {boardSize > 0 && (
+            <div className="layer-selector-mobile">
+              <div className="layer-buttons">
+                {Array.from({ length: boardSize }, (_, i) => (
+                  <button
+                    key={i}
+                    className={`layer-btn ${activeLayer === i ? 'active' : ''}`}
+                    onClick={() => setActiveLayer(prev => prev === i ? null : i)}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  className={`layer-btn ${activeLayer === null ? 'active' : ''}`}
+                  onClick={() => setActiveLayer(null)}
+                >
+                  All
+                </button>
+              </div>
+            </div>
+          )}
 
           <div className="github-link-hud">
             <a 
@@ -232,7 +255,13 @@ function App() {
             isExploded={activeLayer !== null}
           />
           
-          <OrbitControls enablePan={false} minDistance={3} maxDistance={15} />
+          <OrbitControls 
+            enablePan={false} 
+            minDistance={3} 
+            maxDistance={15}
+            enableZoom={true}
+            enableRotate={true}
+          />
         </Canvas>
       </div>
     </div>

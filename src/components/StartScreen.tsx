@@ -87,8 +87,11 @@ export function StartScreen({ onStart }: StartScreenProps) {
                 ? `• ${boardSize}x${boardSize}x${boardSize} Grid\n• Place pieces anywhere\n• 3 in a row EXPLODES!\n• Get ${boardSize} in a row TO WIN` 
                 : `• Gravity Enabled (Connect ${boardSize} style)\n• Pieces fall to bottom\n• 3 in a row EXPLODES!\n• Get ${boardSize} in a row TO WIN`}
             </p>
-            <p className="controls-hint">
+            <p className="controls-hint desktop-controls-hint">
               Rotate: Drag • Zoom: Scroll • Layers: 1-{boardSize}
+            </p>
+            <p className="controls-hint mobile-controls-hint">
+              Rotate: Drag • Zoom: Pinch • Layers: Use buttons
             </p>
           </div>
 
